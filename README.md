@@ -1,22 +1,22 @@
-# ModernLauncher
+# Cheat Launcher
 
-A modern, open-source application launcher built with WPF and .NET 9.
+A modern, open-source Cheat Launcher for Minecrafft built with WPF and .NET 9.
 
 ## Features
 
 - **Modern UI**: Clean, dark-themed interface
-- **Application Discovery**: Automatically detects .exe files in the Apps folder
-- **Search & Filter**: Quickly find applications by name
+- **Cheat Discovery**: Automatically detects .exe files in the Apps folder
+- **Search**: Quickly find applications by name
 - **Favorites System**: Mark frequently used applications as favorites
 - **File Watcher**: Automatically updates when apps are added/removed
 - **Single File Distribution**: Self-contained executable
 
 ## Getting Started
 
-1. Download the latest release (`ModernLauncher-v1.0.0.zip`)
+1. Download the latest release [`CheatLauncher-v1.0.0`](https://github.com/Belligerently/CheatLauncher/releases)
 2. Extract the ZIP file to your desired location
 3. Place your executable files in the `Apps` folder
-4. Run `ModernLauncher.exe`
+4. Run `ModernLauncher.exe` (name of the exe will be changed)
 
 ## Building from Source
 
@@ -27,8 +27,8 @@ A modern, open-source application launcher built with WPF and .NET 9.
 ### Build Instructions
 ```bash
 # Clone the repository
-git clone <your-repo-url>
-cd ModernLauncher
+git clone https://github.com/Belligerently/CheatLauncher
+cd CheatLauncher
 
 # Build the project
 dotnet build --configuration Release
