@@ -2,6 +2,17 @@
 
 A modern, open-source Cheat Launcher for Minecrafft built with WPF and .NET 9.
 
+> [!NOTE]  
+> The image shown when going to the site is not what the app looks like.
+
+<p align="center">
+  <img width="173" height="66" src="https://cdn.nest.rip/uploads/f0e8fdff-6775-42fd-bea3-fc630b57374d.png">
+</p>
+
+<p align="center">
+  <img width="460" height="300" src="https://cdn.nest.rip/uploads/dc296ba4-3f69-4eee-a5a5-3b1732633f9a.png">
+</p>
+
 ## Features
 
 - **Modern UI**: Clean, dark-themed interface
