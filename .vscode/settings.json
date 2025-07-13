@@ -1,0 +1,5 @@
+{
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "omnisharp.enableRoslynAnalyzers": true
+}

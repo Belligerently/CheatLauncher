@@ -1,0 +1,164 @@
+<Window x:Class="ModernLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Modern Launcher" Height="500" Width="800"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        KeyDown="Window_KeyDown" Focusable="True">
+
+    <Window.Resources>
+        <Style x:Key="SidebarButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FFCCCCCC"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" CornerRadius="6" Margin="8,2">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF2A2A2A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF4F46E5"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="16,8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF6366F1"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF3730A3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#FF0F0F0F" CornerRadius="12" BorderBrush="#FF1F1F1F" BorderThickness="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar -->
+            <Border Grid.Column="0" Background="#FF161616" CornerRadius="12,0,0,12">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Logo/Header -->
+                    <Border Grid.Row="0" Background="#FF1A1A1A" CornerRadius="12,0,0,0" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="⚡" FontSize="24" HorizontalAlignment="Center" Foreground="#FF4F46E5"/>
+                            <TextBlock Text="MODERN LAUNCHER" FontSize="11" FontWeight="Bold" Foreground="#FFCCCCCC" 
+                                       HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Navigation Items -->
+                    <StackPanel Grid.Row="1" Margin="0,20,0,0">
+                        <Button x:Name="DashboardBtn" Content="🏠  Dashboard" Style="{StaticResource SidebarButtonStyle}" Background="#FF2A2A2A" Click="Home_Click"/>
+                        <Button x:Name="ApplicationsBtn" Content="📦  Applications" Style="{StaticResource SidebarButtonStyle}" Click="Applications_Click"/>
+                        <Button Content="📂  Open Folder" Style="{StaticResource SidebarButtonStyle}" Click="OpenFolder_Click"/>
+                        <Button Content="🔄  Refresh" Style="{StaticResource SidebarButtonStyle}" Click="Refresh_Click"/>
+                        <Button Content="ℹ️  Status" Style="{StaticResource SidebarButtonStyle}" Click="Status_Click"/>
+                    </StackPanel>
+                    
+                    <!-- Footer -->
+                    <Border Grid.Row="2" Background="#FF1A1A1A" CornerRadius="0,0,0,12" Padding="16,12">
+                        <StackPanel>
+                            <TextBlock Text="Version 1.0.0" FontSize="10" Foreground="#FF666666" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Ready" FontSize="10" Foreground="#FF4F46E5" HorizontalAlignment="Center" FontWeight="Medium"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Main Content Area -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Title bar with controls -->
+                <Border Grid.Row="0" Background="#FF161616" CornerRadius="0,12,0,0" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="24,0,0,0">
+                            <TextBlock Text="Applications" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                            <Border Background="#FF4F46E5" CornerRadius="12" Padding="8,4" Margin="16,0,0,0" VerticalAlignment="Center">
+                                <TextBlock x:Name="AppCountText" Text="0 Apps" FontSize="11" Foreground="White" FontWeight="Medium" VerticalAlignment="Center"/>
+                            </Border>
+                        </StackPanel>
+                        
+                        <!-- Search Bar -->
+                        <Border Background="#FF2A2A2A" CornerRadius="8" Padding="12,8" Margin="320,0,120,0" VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="🔍" FontSize="14" Foreground="#FF666666" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <TextBox x:Name="SearchBox" Grid.Column="1" Background="Transparent" Foreground="White" BorderThickness="0" 
+                                         FontSize="13" VerticalAlignment="Center" VerticalContentAlignment="Center" TextChanged="SearchBox_TextChanged"
+                                         Tag="Search applications..."/>
+                            </Grid>
+                        </Border>
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
+                            <Border Background="#FF2A2A2A" CornerRadius="6" Margin="4,0">
+                                <Button Content="─" Width="32" Height="32" Background="Transparent" Foreground="#FFCCCCCC" 
+                                        BorderThickness="0" FontSize="14" Click="Minimize_Click"/>
+                            </Border>
+                            <Border Background="#FF2A2A2A" CornerRadius="6">
+                                <Button Content="✕" Width="32" Height="32" Background="Transparent" Foreground="#FFCCCCCC" 
+                                        BorderThickness="0" FontSize="14" Click="Close_Click"/>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Main Content -->
+                <Border Grid.Row="1" Background="#FF0F0F0F" CornerRadius="0,0,12,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
+                        <StackPanel x:Name="LaunchOptionsPanel">
+                            <TextBlock Text="Available Applications" FontSize="18" FontWeight="SemiBold" Foreground="White" 
+                                       Margin="0,0,0,20"/>
+                            
+                            <!-- Dynamic launch options will be added here -->
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

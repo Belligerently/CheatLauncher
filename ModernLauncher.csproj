@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>ModernLauncher.Program</StartupObject>
+    <Configuration>Release</Configuration>
+    <DebugType>none</DebugType>
+    
+    <!-- Application Info -->
+    <AssemblyTitle>Modern Launcher</AssemblyTitle>
+    <AssemblyDescription>A modern application launcher</AssemblyDescription>
+    <AssemblyCompany>Modern Launcher</AssemblyCompany>
+    <AssemblyProduct>Modern Launcher</AssemblyProduct>
+    <AssemblyCopyright>Copyright © 2025</AssemblyCopyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="9.0.7" />
+  </ItemGroup>
+
+</Project>
